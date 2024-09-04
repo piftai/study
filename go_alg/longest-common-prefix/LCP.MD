@@ -4,16 +4,8 @@ Algorithm:
 2. Next step is run every step of slice and compare if first word or his part(?) is equal to word
 of slice or his part that have to be the same length
 3. More information. Step By Step algorithm
-4. prefix := strs[0]
-for i := len(prefix)-1; i != 0; i-- {
-    var cur string
-    j, v := range strs {
-        cur = v
-        if v[i:] == prefix[i:] && len(v) >= i{
-            cnt++
-        } else {
-            continue
-        }
-        if cnt == len(strs) { break; return curr }
-   }
-}
+4. I have to take first element from
+5.  strs and check if that element from full to [:i] ==
+6. other elements in strs. I was nearly with my first solution, but 
+7. i gave up in 94/126 test. I pass some ways when my program does not work.
+8. So i checked this video https://www.youtube.com/watch?v=0sWShKIJoo4
