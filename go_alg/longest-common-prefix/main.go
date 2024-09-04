@@ -13,33 +13,14 @@ func main() {
 }
 
 func longestCommonPrefix(strs []string) string {
-	prefix := strs[0]
-	var cnt int
-	if len(prefix) == 1 {
-		for _, val := range strs {
-			if string(val[0]) == prefix {
-				cnt++
+	prefix := ""
+	for i := range len(strs[0]) {
+		for _, v := range strs {
+			if i == len(v) || v[i] != strs[0][i] {
+				return prefix
 			}
 		}
-	}
-	if cnt == len(strs) {
-		return prefix
-	}
-	for i := len(prefix) - 1; i >= 0; i-- { // делаем массив, который будет итерироваться по срезу prefix
-		prefix = prefix[:i]
-		fmt.Printf("i: %d, prefix: %s\n", i, prefix)
-		cnt = 0
-		for _, v := range strs { // массив, который сверяет срез каждого элемента strs со срезом prefix, равны ли они друг другу
-			if len(v) >= i && v[:i] == prefix { // чтобы не было out of range - мы должны
-				// проверять есть ли в элементе столько же или больше символов, чем в префиксе
-				cnt++
-			} else {
-				break // отсекаем лишнее. если понимаем, что префикс уже не подходит
-			}
-		}
-		if cnt == len(strs) {
-			return prefix
-		}
+		prefix += string(strs[0][i])
 	}
 	return prefix
 }
