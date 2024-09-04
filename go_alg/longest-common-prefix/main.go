@@ -1,23 +1,33 @@
 package main
 
+import "fmt"
+
 func main() {
+	str := []string{"a", "a", "a", "aabam"}
+	str1 := []string{"floor", "flower", "flight"}
+	str2 := []string{"ab", "ab", "ab"}
+	fmt.Printf("TEST CASE 1: %s\n", longestCommonPrefix(str))  // correst answer "a"
+	fmt.Printf("TEST CASE 2: %s\n", longestCommonPrefix(str1)) // correct answer "fl"
+	fmt.Printf("TEST CASE 3: %s\n", longestCommonPrefix(str2)) // correct answer "ab"
 
 }
 
 func longestCommonPrefix(strs []string) string {
-	exWord := strs[0]
-
-	for j := 0; len(exWord) != 0; j-- {
-		var cnt int
-		var curr string
-		for i, v := range strs {
-			curr = exWord[:len(v)]
-			if exWord[:len(v)] == v {
+	prefix := strs[0]
+	for i := len(prefix) - 1; i >= 0; i-- { // делаем массив, который будет итерироваться по срезу prefix
+		prefix = prefix[:i]
+		cnt := 0
+		for _, v := range strs { // массив, который сверяет срез каждого элемента strs со срезом prefix, равны ли они друг другу
+			if len(v) >= i && v[:i] == prefix { // чтобы не было out of range - мы должны
+				// проверять есть ли в элементе столько же или больше символов, чем в префиксе
 				cnt++
 			} else {
-				break
+				break // отсекаем лишнее. если понимаем, что префикс уже не подходит
 			}
 		}
-
+		if cnt == len(strs) {
+			return prefix
+		}
 	}
+	return prefix
 }
