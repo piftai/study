@@ -1,6 +1,6 @@
 package main
 
-import (пш
+import (
 	"fmt"
 	"math"
 )
