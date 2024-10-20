@@ -13,8 +13,10 @@ func main() {
 }
 
 func kidsWithCandies(candies []int, extraCandies int) []bool {
-	sort.Ints(candies)
-	maxCandy := candies[len(candies)-1]
+	candiesSorted := make([]int, len(candies))
+	copy(candiesSorted, candies)
+	sort.Ints(candiesSorted)
+	maxCandy := candiesSorted[len(candiesSorted)-1]
 	fmt.Printf("maxCandy: %d\n", maxCandy)
 	res := make([]bool, 0, len(candies)+1)
 	for _, v := range candies {
