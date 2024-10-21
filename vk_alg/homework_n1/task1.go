@@ -6,8 +6,14 @@ import (
 )
 
 func main() {
-	nums := []int{0, 0, 1, 0, 3, 12}
-	fmt.Printf("%s", solution(6, nums))
+	var size int
+	fmt.Scanln(&size)
+	nums := make([]int, size)
+	for i := 0; i < size; i++ {
+		fmt.Scan(&nums[i])
+	}
+
+	fmt.Printf("%s", solution(size, nums))
 }
 
 func solution(n int, nums []int) string {
