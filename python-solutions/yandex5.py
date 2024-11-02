@@ -26,3 +26,5 @@ for ter in ters:
             print("not compare", ter, " ", anotherTer)
     output.append(cnt_ter)
 print(output)
+
+#  сделать еще один-два теста
